@@ -1,6 +1,6 @@
 package com.example.exercisesql_lite;
 
-public class ModKontak {
+public class varContact {
     private String idUser;
     private String nama;
     private String phone;

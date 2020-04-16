@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".clickList"></activity>
         <activity android:name=".update" />
-        <activity android:name=".CRUDkontak" />
+        <activity android:name=".Contact" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

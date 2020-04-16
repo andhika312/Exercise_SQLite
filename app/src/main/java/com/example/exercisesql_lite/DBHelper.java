@@ -3,11 +3,9 @@ package com.example.exercisesql_lite;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -47,27 +45,27 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void TambahKontak(ModKontak modKontak){
+    public void TambahKontak(varContact varContact){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_NAMA, modKontak.getNama());
-        values.put(COLUMN_PHONE, modKontak.getPhone());
-        values.put(COLUMN_EMAIL, modKontak.getEmail());
-        values.put(COLUMN_ALAMAT, modKontak.getAlamat());
+        values.put(COLUMN_NAMA, varContact.getNama());
+        values.put(COLUMN_PHONE, varContact.getPhone());
+        values.put(COLUMN_EMAIL, varContact.getEmail());
+        values.put(COLUMN_ALAMAT, varContact.getAlamat());
         // Input Data
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
 
-    public int UpdateData(ModKontak modKontak) {
+    public int UpdateData(varContact varContact) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_NAMA, modKontak.getNama());
-        values.put(COLUMN_PHONE, modKontak.getPhone());
-        values.put(COLUMN_EMAIL, modKontak.getEmail());
-        values.put(COLUMN_ALAMAT, modKontak.getAlamat());
+        values.put(COLUMN_NAMA, varContact.getNama());
+        values.put(COLUMN_PHONE, varContact.getPhone());
+        values.put(COLUMN_EMAIL, varContact.getEmail());
+        values.put(COLUMN_ALAMAT, varContact.getAlamat());
         //proses update tabel
-        return db.update(TABLE_NAME, values, COLUMN_ID + " = ?",new String[] { String.valueOf(modKontak.getIdUser()) });
+        return db.update(TABLE_NAME, values, COLUMN_ID + " = ?",new String[] { String.valueOf(varContact.getIdUser()) });
     }
 
     public int HapusData(String idUser) {
@@ -75,8 +73,8 @@ public class DBHelper extends SQLiteOpenHelper {
         return db.delete(TABLE_NAME, COLUMN_ID + " = ?",new String[] {idUser });
     }
 
-    public ModKontak getUserById(String id){
-        ModKontak modKontak=null;
+    public varContact getUserById(String id){
+        varContact varContact =null;
 
         String selectQuery = "SELECT  * FROM " + TABLE_NAME+" where "+COLUMN_ID+"="+id;
 
@@ -85,20 +83,20 @@ public class DBHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                modKontak = new ModKontak();
+                varContact = new varContact();
 
-                modKontak.setIdUser(cursor.getString(cursor.getColumnIndex(COLUMN_ID)));
-                modKontak.setNama(cursor.getString(cursor.getColumnIndex(COLUMN_NAMA)));
-                modKontak.setPhone(cursor.getString(cursor.getColumnIndex(COLUMN_PHONE)));
-                modKontak.setEmail(cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL)));
-                modKontak.setAlamat(cursor.getString(cursor.getColumnIndex(COLUMN_ALAMAT)));
+                varContact.setIdUser(cursor.getString(cursor.getColumnIndex(COLUMN_ID)));
+                varContact.setNama(cursor.getString(cursor.getColumnIndex(COLUMN_NAMA)));
+                varContact.setPhone(cursor.getString(cursor.getColumnIndex(COLUMN_PHONE)));
+                varContact.setEmail(cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL)));
+                varContact.setAlamat(cursor.getString(cursor.getColumnIndex(COLUMN_ALAMAT)));
             } while (cursor.moveToNext());
         }
 
         cursor.close();
         db.close();
 
-        return modKontak;
+        return varContact;
     }
 
     public   Cursor AmbilSemuaData(){

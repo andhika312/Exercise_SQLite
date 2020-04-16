@@ -51,12 +51,12 @@ public class clickList extends AppCompatActivity {
             idUser =  in.getStringExtra("id_user");
 
             DBHelper db = new DBHelper(getApplicationContext());
-            ModKontak modKontak = db.getUserById(idUser);
+            varContact varContact = db.getUserById(idUser);
 
-            nama.setText(modKontak.getNama());
-            phone.setText(modKontak.getPhone());
-            email.setText(modKontak.getEmail());
-            alamat.setText(modKontak.getAlamat());
+            nama.setText(varContact.getNama());
+            phone.setText(varContact.getPhone());
+            email.setText(varContact.getEmail());
+            alamat.setText(varContact.getAlamat());
 
         }
     }

@@ -22,9 +22,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<ModKontak > newsList = new ArrayList <ModKontak>();
-    private ListKontakAdapter adapter;
-    ListKontakAdapter custom = new ListKontakAdapter(null, newsList);
+    private List<varContact> newsList = new ArrayList <varContact>();
+    private ListAdapter adapter;
+    ListAdapter custom = new ListAdapter(null, newsList);
     ListView listView;
     public String[] idUserArray;
     FloatingActionButton add;
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         listView= (ListView)findViewById(R.id.listView);
-        adapter = new ListKontakAdapter(MainActivity.this, newsList);
+        adapter = new ListAdapter(MainActivity.this, newsList);
         listView.setAdapter(adapter);
         reloadData();
 
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public View Tambah(View v){
-        Intent i = new Intent(getApplicationContext(),CRUDkontak.class);
+        Intent i = new Intent(getApplicationContext(), Contact.class);
         i.putExtra("mode", "Tambah");
         startActivity(i);
         finish();
@@ -151,18 +151,18 @@ public class MainActivity extends AppCompatActivity {
             int i=0;
             newsList.clear();
             do {
-                ModKontak modKontak = new ModKontak();
+                varContact varContact = new varContact();
 
-                modKontak.setIdUser(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_ID)));
-                modKontak.setNama(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_NAMA)));
-                modKontak.setPhone(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_PHONE)));
-                modKontak.setEmail(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_EMAIL)));
-                modKontak.setAlamat(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_ALAMAT)));
+                varContact.setIdUser(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_ID)));
+                varContact.setNama(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_NAMA)));
+                varContact.setPhone(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_PHONE)));
+                varContact.setEmail(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_EMAIL)));
+                varContact.setAlamat(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_ALAMAT)));
 
-                idUserArray[i] = modKontak.getIdUser();
+                idUserArray[i] = varContact.getIdUser();
 
                 i++;
-                newsList.add(modKontak);
+                newsList.add(varContact);
             } while (cursor.moveToNext());
 
             // Tutup Koneksi

@@ -8,7 +8,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 public class update extends AppCompatActivity {
@@ -56,12 +55,12 @@ public class update extends AppCompatActivity {
             idUser =  in.getStringExtra("id_user");
 
             DBHelper db = new DBHelper(getApplicationContext());
-            ModKontak modKontak = db.getUserById(idUser);
+            varContact varContact = db.getUserById(idUser);
 
-            nama.setText(modKontak.getNama());
-            phone.setText(modKontak.getPhone());
-            email.setText(modKontak.getEmail());
-            alamat.setText(modKontak.getAlamat());
+            nama.setText(varContact.getNama());
+            phone.setText(varContact.getPhone());
+            email.setText(varContact.getEmail());
+            alamat.setText(varContact.getAlamat());
 
         }
     }
@@ -82,18 +81,18 @@ public class update extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),
                     "Format Email Salah !.",Toast.LENGTH_SHORT).show();
         }else{
-            ModKontak modKontak = new ModKontak();
-            modKontak.setNama(nama.getText().toString());
-            modKontak.setPhone(phone.getText().toString());
-            modKontak.setEmail(email.getText().toString());
-            modKontak.setAlamat(alamat.getText().toString());
+            varContact varContact = new varContact();
+            varContact.setNama(nama.getText().toString());
+            varContact.setPhone(phone.getText().toString());
+            varContact.setEmail(email.getText().toString());
+            varContact.setAlamat(alamat.getText().toString());
 
             DBHelper db = new DBHelper(getApplicationContext());
 
 
             if(mode.equals("Edit")){
-                modKontak.setIdUser(idUser);
-                int status = db.UpdateData(modKontak);
+                varContact.setIdUser(idUser);
+                int status = db.UpdateData(varContact);
                 if(status   >0){
                     Toast.makeText(update.this, "Data Berhasil Diubah ",Toast.LENGTH_LONG).show();
 

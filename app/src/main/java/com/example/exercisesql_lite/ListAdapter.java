@@ -11,17 +11,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.List;
-
-public class ListKontakAdapter extends BaseAdapter {
+public class ListAdapter extends BaseAdapter {
     private Activity context;
     private LayoutInflater inflater;
-    private List<ModKontak > NasItem;
+    private List<varContact> NasItem;
 
-    public ListKontakAdapter(Activity activity, List   <ModKontak > NasItem) {
+    public ListAdapter(Activity activity, List   <varContact> NasItem) {
 
-        ListKontakAdapter.this.context = activity;
-        ListKontakAdapter.this.NasItem = NasItem;
+        ListAdapter.this.context = activity;
+        ListAdapter.this.NasItem = NasItem;
     }
 
     @Override
@@ -51,7 +49,7 @@ public class ListKontakAdapter extends BaseAdapter {
 
         TextView tvNamaUser = (TextView) rowView.findViewById(R.id.tvNamaUser);
         TextView tvPhone = (TextView) rowView.findViewById(R.id.tvPhone);
-        ModKontak m = NasItem.get(position);
+        varContact m = NasItem.get(position);
 
         tvNamaUser.setText(m.getNama());
         tvPhone.setText(m.getPhone());
