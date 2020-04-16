@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">exerciseSQL_lite</string>
+    <string name="DK">Daftar Kontak</string>
+    <string name="nama">nama</string>
+    <string name="nama1">Nama :</string>
+    <string name="notelp">No Telp :</string>
+    <string name="email">Email :</string>
+    <string name="Alamat">Alamat :</string>
+    <string name="simpan">SIMPAN</string>
+    <string name="td">Tambah Data</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="kembali">kembali</string>
+    <string name="update">Update Data</string>
+    <string name="batal">Batal</string>
+    <string name="ud">Update Data</string>
+    <string name="data">Data</string>
+</resources>
